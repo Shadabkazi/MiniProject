@@ -26,32 +26,32 @@ public class ProductDAOImpl implements ProductDAO {
 
 	
 	@Override
-	public List<Product> getAllProducts() throws SQLException {
+	public List<Product> getAllProducts() {
 		return	(List<Product>) hibernateTemplate.find("from Product");
 		
 }
 
 
 	@Override
-	public Product getProductById(String productId) throws SQLException {
+	public Product getProductById(String productId) {
 		return hibernateTemplate.get(Product.class, productId);
 	}
 
 
 	@Override
-	public void insert(Product product) throws SQLException {
+	public void insert(Product product) {
 		hibernateTemplate.save(product);
 }
 
 
 	@Override
-	public void update(Product product) throws SQLException {
+	public void update(Product product) {
 		hibernateTemplate.update(product);
 }
 
 
 	@Override
-	public void delete(Product product) throws SQLException {
+	public void delete(Product product) {
 		hibernateTemplate.delete(product);
 }
 

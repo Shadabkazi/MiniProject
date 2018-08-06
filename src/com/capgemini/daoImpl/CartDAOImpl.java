@@ -22,27 +22,27 @@ public class CartDAOImpl implements CartDAO {
 
 	
 	@Override
-	public List<Cart> getAllCart() throws SQLException {
+	public List<Cart> getAllCart() {
 		return	(List<Cart>) hibernateTemplate.find("from cart");
 	}
 
 	@Override
-	public Cart getCartById(String Id) throws SQLException {
+	public Cart getCartById(String Id) {
 			return hibernateTemplate.get(Cart.class, Id);
 		}
 
 	@Override
-	public void insert(Cart cart) throws SQLException {
+	public void insert(Cart cart) {
 		hibernateTemplate.save(cart);
 	}
 
 	@Override
-	public void update(Cart cart) throws SQLException {
+	public void update(Cart cart) {
 		hibernateTemplate.update(cart);
 	}
 
 	@Override
-	public void delete(Cart cart) throws SQLException {
+	public void delete(Cart cart) {
 		hibernateTemplate.delete(cart);
 		
 	}

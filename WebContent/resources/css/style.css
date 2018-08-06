@@ -1,0 +1,55 @@
+
+/* Login Page style start */
+.table {
+  display: table;
+  align-content:center;
+  width:500px;
+  margin-left: 40%;
+}
+.table-row {
+  display: table-row;
+}
+.table-cell {
+  display: table-cell;
+  padding: 10px;
+}
+
+/* Login Page style end */
+
+#outerContainer{
+	 display: flex;                  /* establish flex container */
+  flex-direction: row;            /* default value; can be omitted */
+  flex-wrap: nowrap;              /* default value; can be omitted */
+  justify-content: space-between; /* switched from default (flex-start, see below) */
+  padding: 40px;
+ 
+}
+
+#paymentModeDiv {
+	float:left;
+	width:100%;
+	border: 1px solid black;
+	padding:10px;
+}
+
+.divcenter{
+	float:center;
+	width:20%;
+}
+
+.divright{
+	float:right;
+	width:80%;
+	border: 1px solid black;
+	padding: 10px;
+	text-align: justify;
+}
+
+#addressSelectionDiv{
+	padding: 30px;
+	margin-left:20%;
+	margin-right: 20%;
+	
+}
+
+

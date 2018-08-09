@@ -22,7 +22,7 @@ public class CustomerServiceImpl implements CustomerService {
 	public List<Customer> sortByIdAsc() {
 		// TODO Auto-generated method stub
 
-		return findAll().stream().sorted((p1, p2) -> p2.getCustomer_id().compareTo(p1.getCustomer_id()))
+		return findAll().stream().sorted((c1,c2)->c1.getId()>c2.getId()?1:-1)
 				.collect(Collectors.toList());
 
 		// TODO Auto-generated catch block
@@ -33,7 +33,7 @@ public class CustomerServiceImpl implements CustomerService {
 	public List<Customer> sortByIdDesc() {
 		// TODO Auto-generated method stub
 
-		return findAll().stream().sorted((p1, p2) -> p1.getCustomer_id().compareTo(p2.getCustomer_id()))
+		return findAll().stream().sorted((c1,c2)->c2.getId()>c1.getId()?1:-1)
 				.collect(Collectors.toList());
 
 	}
@@ -42,7 +42,7 @@ public class CustomerServiceImpl implements CustomerService {
 	public List<Customer> sortByAscName() {
 		// TODO Auto-generated method stub
 
-		return findAll().stream().sorted((p1, p2) -> p2.getFname().compareTo(p1.getFname()))
+		return findAll().stream().sorted((p1, p2) -> p1.getfName().compareTo(p2.getfName()))
 				.collect(Collectors.toList());
 
 	}
@@ -51,15 +51,15 @@ public class CustomerServiceImpl implements CustomerService {
 	public List<Customer> sortByDescName() {
 		// TODO Auto-generated method stub
 
-		return findAll().stream().sorted((p1, p2) -> p1.getFname().compareTo(p2.getFname()))
+		return findAll().stream().sorted((p1, p2) -> p2.getfName().compareTo(p1.getfName()))
 				.collect(Collectors.toList());
 
 	}
 
 	@Override
-	public Customer findById(String customer_id) {
+	public Customer findById(int customerId) {
 		// TODO Auto-generated method stub
-		return customerDao.getCustomerById(customer_id);
+		return customerDao.getCustomerById(customerId);
 	}
 
 	@Override

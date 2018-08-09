@@ -9,7 +9,7 @@ public interface PaymentService {
 
 	List<Payment> findAllPayment();
 
-	Payment findPaymentById(String pay_id);
+	Payment findPaymentById(int payId);
 
 	void add(Payment payment);
 

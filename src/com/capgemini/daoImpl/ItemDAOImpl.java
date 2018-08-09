@@ -1,21 +1,12 @@
 package com.capgemini.daoImpl;
 
-import java.sql.SQLException;
 import java.util.List;
 
-import javax.persistence.Query;
-
-
-import org.hibernate.Session;
-import org.hibernate.SessionFactory;
-import org.hibernate.Transaction;
-import org.hibernate.cfg.Configuration;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.orm.hibernate5.HibernateTemplate;
 import org.springframework.stereotype.Repository;
 
 import com.capgemini.daos.ItemDAO;
-import com.capgemini.models.Admin;
 import com.capgemini.models.Item;
 
 @Repository
@@ -32,10 +23,10 @@ public class ItemDAOImpl implements ItemDAO {
 	}
 
 	@Override
-	public Item getItemById(String item_id) {
+	public Item getItemById(int itemId) {
 		// TODO Auto-generated method stub
 		
-		return hibernateTemplate.get(Item.class, item_id);
+		return hibernateTemplate.get(Item.class, itemId);
 	}
 
 	@Override

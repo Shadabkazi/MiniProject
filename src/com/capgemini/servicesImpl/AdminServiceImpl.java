@@ -17,7 +17,7 @@ public class AdminServiceImpl implements AdminService {
 	private AdminDao adminDao;
 	 
 	@Override
-	public Admin findById(String AdminId) {
+	public Admin findById(int AdminId) {
 		return adminDao.getAdminById(AdminId);
 	}
 
@@ -43,24 +43,22 @@ public class AdminServiceImpl implements AdminService {
 
 	@Override
 	public List<Admin> sortByIdAsc() {
-		return findAll().stream().sorted((p1,p2)->p1.getId().compareTo(p2.getId())).collect(Collectors.toList());
+		return findAll().stream().sorted((a1,a2)->a1.getId()>a2.getId()?1:-1).collect(Collectors.toList());
 	}
 
 	@Override
 	public List<Admin> sortByIdDesc() {
-		return findAll().stream().sorted((p1,p2)->p2.getId().compareTo(p1.getId())).collect(Collectors.toList());
+		return findAll().stream().sorted((a1,a2)->a2.getId()>a1.getId()?1:-1).collect(Collectors.toList());
 	}
 
 	@Override
 	public List<Admin> sortByNameAsc() {
-		// TODO Auto-generated method stub
-		return findAll().stream().sorted((p1,p2)->p1.getUsername().compareTo(p2.getId())).collect(Collectors.toList());
+		return findAll().stream().sorted((p1,p2)->p1.getUsername().compareTo(p2.getUsername())).collect(Collectors.toList());
 	}
 
 	@Override
 	public List<Admin> sortByNameDesc() {
-		// TODO Auto-generated method stub
-		return findAll().stream().sorted((p1,p2)->p2.getUsername().compareTo(p1.getId())).collect(Collectors.toList());
+		return findAll().stream().sorted((p1,p2)->p2.getUsername().compareTo(p1.getUsername())).collect(Collectors.toList());
 	}
 	
 }

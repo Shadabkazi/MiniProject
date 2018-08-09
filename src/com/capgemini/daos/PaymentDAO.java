@@ -10,7 +10,7 @@ public interface PaymentDAO {
 	// data access methods
 		List<Payment> getAllPayments();
 
-		Payment getPaymentById(String pay_id);
+		Payment getPaymentById(int payId);
 
 		void insert(Payment payment);
 

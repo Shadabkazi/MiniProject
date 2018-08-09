@@ -1,20 +1,12 @@
 package com.capgemini.daoImpl;
 
-import java.sql.SQLException;
 import java.util.List;
 
-import javax.persistence.Query;
-
-import org.hibernate.Session;
-import org.hibernate.SessionFactory;
-import org.hibernate.Transaction;
-import org.hibernate.cfg.Configuration;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.orm.hibernate5.HibernateTemplate;
 import org.springframework.stereotype.Repository;
 
 import com.capgemini.daos.PaymentDAO;
-import com.capgemini.models.Admin;
 import com.capgemini.models.Payment;
 
 @Repository
@@ -25,14 +17,14 @@ public class PaymentDAOImpl implements PaymentDAO {
 	
 	@Override
 	public List<Payment> getAllPayments() {
-		return (List<Payment>) hibernateTemplate.find("from payment");
+		return (List<Payment>)hibernateTemplate.find("from payment");
 		
 	}
 
 	@Override
-	public Payment getPaymentById(String pay_id) {
+	public Payment getPaymentById(int payId) {
 		// TODO Auto-generated method stub
-		return hibernateTemplate.get(Payment.class, pay_id);
+		return hibernateTemplate.get(Payment.class, payId);
 	}
 
 	@Override

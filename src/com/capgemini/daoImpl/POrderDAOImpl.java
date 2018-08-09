@@ -1,20 +1,12 @@
 package com.capgemini.daoImpl;
 
-import java.sql.SQLException;
 import java.util.List;
 
-import javax.persistence.Query;
-
-import org.hibernate.Session;
-import org.hibernate.SessionFactory;
-import org.hibernate.Transaction;
-import org.hibernate.cfg.Configuration;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.orm.hibernate5.HibernateTemplate;
 import org.springframework.stereotype.Repository;
 
 import com.capgemini.daos.POrderDAO;
-import com.capgemini.models.Admin;
 import com.capgemini.models.POrder;
 
 @Repository
@@ -30,9 +22,9 @@ public class POrderDAOImpl implements POrderDAO {
 	}
 
 	@Override
-	public POrder getOrderById(String order_id) {
+	public POrder getOrderById(int orderId) {
 		// TODO Auto-generated method stub
-		return hibernateTemplate.get(POrder.class, order_id);
+		return hibernateTemplate.get(POrder.class, orderId);
 	}
 
 	@Override

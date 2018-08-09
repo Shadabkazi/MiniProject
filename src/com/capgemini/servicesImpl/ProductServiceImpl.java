@@ -1,6 +1,5 @@
 package com.capgemini.servicesImpl;
 
-import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -9,7 +8,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.capgemini.daoImpl.ProductDAOImpl;
 import com.capgemini.daos.ProductDAO;
 import com.capgemini.models.Product;
 import com.capgemini.services.ProductService;
@@ -31,7 +29,7 @@ public class ProductServiceImpl implements ProductService {
 	}
 
 	@Override
-	public Product findById(String productId) {
+	public Product findById(int productId) {
 			Product product=productDao.getProductById(productId);
 			return product;
 	}
@@ -57,7 +55,7 @@ public class ProductServiceImpl implements ProductService {
 	public List<Product> sortById()   {
 		ArrayList<Product> products;
 			products=(ArrayList<Product>)productDao.getAllProducts();
-			return products.stream().sorted().collect(Collectors.toList());		// return ID sorted list
+			return products.stream().sorted((p1,p2)->p1.getId()>p2.getId()?1:-1).collect(Collectors.toList());		// return ID sorted list
 	}
 
 	@Override
@@ -65,7 +63,7 @@ public class ProductServiceImpl implements ProductService {
 		ArrayList<Product> products;
 			products=(ArrayList<Product>)productDao.getAllProducts();
 			// Return list sorted by Name Ascending
-			return products.stream().sorted((p1,p2)->p1.getProd_name().compareTo(p2.getProd_name())).collect(Collectors.toList());		
+			return products.stream().sorted((p1,p2)->p1.getName().compareTo(p2.getName())).collect(Collectors.toList());		
 	}
 
 	@Override
@@ -73,7 +71,7 @@ public class ProductServiceImpl implements ProductService {
 		ArrayList<Product> products;
 			products=(ArrayList<Product>)productDao.getAllProducts();
 			// Return list sorted by Name Descending
-			return products.stream().sorted((p1,p2)->p2.getProd_name().compareTo(p1.getProd_name())).collect(Collectors.toList());		
+			return products.stream().sorted((p1,p2)->p2.getName().compareTo(p1.getName())).collect(Collectors.toList());		
 	}
 
 	@Override
@@ -81,7 +79,7 @@ public class ProductServiceImpl implements ProductService {
 		ArrayList<Product> products;
 			products=(ArrayList<Product>)productDao.getAllProducts();
 			// Return list sorted by Brand Ascending
-			return products.stream().sorted((p1,p2)->p1.getProd_brand().compareTo(p2.getProd_brand())).collect(Collectors.toList());		
+			return products.stream().sorted((p1,p2)->p1.getBrand().compareTo(p2.getBrand())).collect(Collectors.toList());		
 	}
 
 	@Override
@@ -89,7 +87,7 @@ public class ProductServiceImpl implements ProductService {
 		ArrayList<Product> products;
 			products=(ArrayList<Product>)productDao.getAllProducts();
 			// Return list sorted by Brand Descending
-			return products.stream().sorted((p1,p2)->p2.getProd_brand().compareTo(p1.getProd_brand())).collect(Collectors.toList());		
+			return products.stream().sorted((p1,p2)->p2.getBrand().compareTo(p1.getBrand())).collect(Collectors.toList());		
 	}
 
 	@Override
@@ -97,7 +95,7 @@ public class ProductServiceImpl implements ProductService {
 		ArrayList<Product> products;
 			products=(ArrayList<Product>)productDao.getAllProducts();
 			// Return list sorted by Price Ascending
-			return products.stream().sorted((p1,p2)->p1.getProd_price()>p2.getProd_price()?1:-1).collect(Collectors.toList());			
+			return products.stream().sorted((p1,p2)->p1.getPrice()>p2.getPrice()?1:-1).collect(Collectors.toList());			
 		}
 
 	@Override
@@ -105,7 +103,7 @@ public class ProductServiceImpl implements ProductService {
 		ArrayList<Product> products;
 			products=(ArrayList<Product>)productDao.getAllProducts();
 			// Return list sorted by Price Descending
-			return products.stream().sorted((p1,p2)->p2.getProd_price()>p1.getProd_price()?1:-1).collect(Collectors.toList());		
+			return products.stream().sorted((p1,p2)->p2.getPrice()>p1.getPrice()?1:-1).collect(Collectors.toList());		
 	}
 
 	

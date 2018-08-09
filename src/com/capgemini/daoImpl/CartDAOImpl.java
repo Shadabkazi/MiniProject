@@ -27,7 +27,7 @@ public class CartDAOImpl implements CartDAO {
 	}
 
 	@Override
-	public Cart getCartById(String Id) {
+	public Cart getCartById(int Id) {
 			return hibernateTemplate.get(Cart.class, Id);
 		}
 

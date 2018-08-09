@@ -2,11 +2,14 @@ package com.capgemini.models;
 
 import java.sql.Date;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 import org.springframework.stereotype.Component;
+
 
 @Component
 @Entity
@@ -14,74 +17,107 @@ import org.springframework.stereotype.Component;
 public class POrder {
 	
 	@Id
-	private String order_id;
-	private Date order_date;
-	private String delivery_address_id;
-	private float tax_amount;
+	private int orderId;
+	private Date orderDate;
+	
+	@OneToOne(cascade=CascadeType.ALL)
+	private DeliveryAddress address;
+	
+	private float taxAmount;
 	private float discount;
-	private float total_amount;
-	private String cart_id;
-	public String getOrder_id() {
-		return order_id;
+	private float totalAmount;
+	
+	@OneToOne(cascade=CascadeType.DETACH)
+	private Customer customer;
+	
+	@OneToOne(cascade=CascadeType.ALL)
+	private Payment payment;
+
+	private Cart cart;
+
+	public int getOrderId() {
+		return orderId;
 	}
-	public void setOrder_id(String order_id) {
-		this.order_id = order_id;
+
+	public void setOrderId(int orderId) {
+		this.orderId = orderId;
 	}
-	public Date getOrder_date() {
-		return order_date;
+
+	public Date getOrderDate() {
+		return orderDate;
 	}
-	public void setOrder_date(Date order_date) {
-		this.order_date = order_date;
+
+	public void setOrderDate(Date orderDate) {
+		this.orderDate = orderDate;
 	}
-	public String getDelivery_address_id() {
-		return delivery_address_id;
+
+	public DeliveryAddress getAddress() {
+		return address;
 	}
-	public void setDelivery_address_id(String delivery_address_id) {
-		this.delivery_address_id = delivery_address_id;
+
+	public void setAddress(DeliveryAddress address) {
+		this.address = address;
 	}
-	public float getTax_amount() {
-		return tax_amount;
+
+	public float getTaxAmount() {
+		return taxAmount;
 	}
-	public void setTax_amount(float tax_amount) {
-		this.tax_amount = tax_amount;
+
+	public void setTaxAmount(float taxAmount) {
+		this.taxAmount = taxAmount;
 	}
+
 	public float getDiscount() {
 		return discount;
 	}
+
 	public void setDiscount(float discount) {
 		this.discount = discount;
 	}
-	public float getTotal_amount() {
-		return total_amount;
+
+	public float getTotalAmount() {
+		return totalAmount;
 	}
-	public void setTotal_amount(float total_amount) {
-		this.total_amount = total_amount;
+
+	public void setTotalAmount(float totalAmount) {
+		this.totalAmount = totalAmount;
 	}
-	public String getCart_id() {
-		return cart_id;
+
+	public Customer getCustomer() {
+		return customer;
 	}
-	public void setCart_id(String cart_id) {
-		this.cart_id = cart_id;
+
+	public void setCustomer(Customer customer) {
+		this.customer = customer;
 	}
-	public POrder(String order_id, Date order_date, String delivery_address_id, float tax_amount,
-			float discount, float total_amount, String cart_id) {
-		super();
-		this.order_id = order_id;
-		this.order_date = order_date;
-		this.delivery_address_id = delivery_address_id;
-		this.tax_amount = tax_amount;
-		this.discount = discount;
-		this.total_amount = total_amount;
-		this.cart_id = cart_id;
+
+	public Cart getCart() {
+		return cart;
 	}
+
+	public void setCart(Cart cart) {
+		this.cart = cart;
+	}
+	
+	
+	
+	public Payment getPayment() {
+		return payment;
+	}
+
+	public void setPayment(Payment payment) {
+		this.payment = payment;
+	}
+
 	public POrder() {
-		
+		// TODO Auto-generated constructor stub
 	}
+
 	@Override
 	public String toString() {
-		return "POrder [order_id=" + order_id + ", order_date=" + order_date + ", delivery_address_id="
-				+ delivery_address_id + ", tax_amount=" + tax_amount + ", discount=" + discount + ", total_amount="
-				+ total_amount + ", cart_id=" + cart_id + "]";
+		return "POrder [orderId=" + orderId + ", orderDate=" + orderDate + ", address=" + address + ", taxAmount="
+				+ taxAmount + ", discount=" + discount + ", totalAmount=" + totalAmount + ", customer=" + customer
+				+ ", payment=" + payment + ", cart=" + cart + "]";
 	}
 	
 	

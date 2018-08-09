@@ -1,6 +1,5 @@
 package com.capgemini.servicesImpl;
 
-import java.sql.SQLException;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,7 +25,7 @@ public class PaymentServiceImpl implements PaymentService {
 	}
 
 	@Override
-	public Payment findPaymentById(String pay_id){
+	public Payment findPaymentById(int pay_id){
 			Payment p = pdao.getPaymentById(pay_id);
 			return p;
 		

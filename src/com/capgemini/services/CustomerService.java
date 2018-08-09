@@ -7,11 +7,12 @@ import com.capgemini.models.Customer;
 
 
 public interface CustomerService {
-	Customer findById(String customer_id);
+	Customer findById(int customerId);
 	void insert(Customer customer);
 	void update(Customer customer);
 	void delete(Customer customer);
 	List<Customer> findAll();
+	
 	List<Customer> sortByIdAsc();
 	List<Customer> sortByIdDesc();
 	List<Customer> sortByAscName();

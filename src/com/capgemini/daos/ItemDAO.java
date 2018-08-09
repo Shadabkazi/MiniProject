@@ -9,7 +9,7 @@ public interface ItemDAO {
 	// data access methods
 			List<Item> getAllItems();
 
-			Item getItemById(String item_id);
+			Item getItemById(int itemId);
 
 			void insert(Item item);
 

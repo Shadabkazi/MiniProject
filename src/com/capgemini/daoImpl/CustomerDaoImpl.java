@@ -19,7 +19,7 @@ public class CustomerDaoImpl implements CustomerDao {
 	}
 
 	@Override
-	public Customer getCustomerById(String id) {
+	public Customer getCustomerById(int id) {
 		// TODO Auto-generated method stub
 		return hibernateTemplate.get(Customer.class, id);
 	}

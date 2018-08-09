@@ -8,7 +8,7 @@ public interface ItemService {
 
 	List<Item> findAllItems();
 
-	Item findItemById(String item_id);
+	Item findItemById(int itemId);
 
 	void add(Item Item);
 

@@ -20,7 +20,7 @@ public class AdminDaoImpl implements AdminDao {
 	}
 
 	@Override
-	public Admin getAdminById(String id) {
+	public Admin getAdminById(int id) {
 		// TODO Auto-generated method stub
 		return hibernateTemplate.get(Admin.class, id);
 	}

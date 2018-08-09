@@ -32,8 +32,8 @@ public class ItemServiceImpl implements ItemService {
 	}
 
 	@Override
-	public Item findItemById(String item_id) {
-		return itemDao.getItemById(item_id);
+	public Item findItemById(int itemId) {
+		return itemDao.getItemById(itemId);
 			
 	}
 

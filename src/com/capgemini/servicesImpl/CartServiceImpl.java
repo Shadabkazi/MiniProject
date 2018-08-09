@@ -29,7 +29,7 @@ public class CartServiceImpl implements CartService {
 	}
 
 	@Override
-	public Cart findById(String CartId) {
+	public Cart findById(int CartId) {
 			Cart cart=cartDao.getCartById(CartId);
 			return cart;
 	}
@@ -50,30 +50,6 @@ public class CartServiceImpl implements CartService {
 		
 	}
 
-	@Override
-	public List<Cart> sortById() {
-		ArrayList<Cart> carts;
-			carts=(ArrayList<Cart>)cartDao.getAllCart();
-			// Return list sorted by ID
-			return carts.stream().sorted((c1,c2)->c1.getCart_id().compareTo(c2.getCart_id())).collect(Collectors.toList());	
-	}
-
-	@Override
-	public List<Cart> sortByDate() {
-		ArrayList<Cart> carts;
-			carts=(ArrayList<Cart>)cartDao.getAllCart();
-			// Return list sorted by ID
-			return carts.stream().sorted((c1,c2)->c1.getCart_date().compareTo(c2.getCart_date())).collect(Collectors.toList());	
-	}
-
-	@Override
-	public List<Cart> sortByCustomerId() {
-		ArrayList<Cart> carts;
-	
-			carts=(ArrayList<Cart>)cartDao.getAllCart();
-			// Return list sorted by ID
-			return carts.stream().sorted((c1,c2)->c1.getCustomer_id().compareTo(c2.getCustomer_id())).collect(Collectors.toList());	
-	}
 
 	
 }

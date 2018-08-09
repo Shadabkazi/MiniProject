@@ -9,7 +9,7 @@ import com.capgemini.models.Product;
 public interface ProductService {
 
 	List<Product> findAll();
-	Product findById(String productId);
+	Product findById(int productId);
 	void add(Product product);
 	void edit(Product product);
 	void remove(Product product);

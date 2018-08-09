@@ -9,7 +9,7 @@ public interface CartDAO {
 	//Data Access Methods
 	public List<Cart> getAllCart();
 	
-	public Cart getCartById(String Id);
+	public Cart getCartById(int Id);
 	
 	void insert(Cart cart);
 	

@@ -25,8 +25,8 @@ public class POrderServiceImpl implements POrderService {
 	}
 
 	@Override
-	public POrder findOrderById(String order_id) {
-			POrder o = podao.getOrderById(order_id);
+	public POrder findOrderById(int orderId) {
+			POrder o = podao.getOrderById(orderId);
 			return o;
 	}
 

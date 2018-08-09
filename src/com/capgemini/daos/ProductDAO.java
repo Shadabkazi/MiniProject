@@ -9,7 +9,7 @@ public interface ProductDAO {
 	//Data Access Methods
 		public List<Product> getAllProducts() ;
 		
-		public Product getProductById(String productId) ;
+		public Product getProductById(int productId) ;
 		
 		void insert(Product product) ;
 		

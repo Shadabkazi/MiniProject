@@ -10,7 +10,7 @@ public interface POrderDAO {
 	// data access methods
 	List<POrder> getAllOrders();
 
-	POrder getOrderById(String order_id);
+	POrder getOrderById(int orderId);
 
 	void insert(POrder order);
 

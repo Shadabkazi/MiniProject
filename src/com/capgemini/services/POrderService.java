@@ -8,7 +8,7 @@ public interface POrderService {
 
 	List<POrder> findAllOrders() ;
 
-	POrder findOrderById(String order_id) ;
+	POrder findOrderById(int orderId);
 
 	void add(POrder order) ;
 

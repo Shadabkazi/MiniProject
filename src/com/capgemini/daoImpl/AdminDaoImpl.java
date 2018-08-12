@@ -1,4 +1,5 @@
 package com.capgemini.daoImpl;
+
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,8 +12,9 @@ import com.capgemini.models.Admin;
 @Repository
 public class AdminDaoImpl implements AdminDao {
 
-	 @Autowired
-		private HibernateTemplate hibernateTemplate;
+	@Autowired
+	private HibernateTemplate hibernateTemplate;
+
 	@Override
 	public List<Admin> getAllAdmins() {
 		// TODO Auto-generated method stub
@@ -42,8 +44,5 @@ public class AdminDaoImpl implements AdminDao {
 		// TODO Auto-generated method stub
 		hibernateTemplate.delete(admin);
 	}
-	
-	
-	}
 
-
+}

@@ -13,6 +13,7 @@ import com.capgemini.services.CategoryService;
 @Service
 @Transactional
 public class CategoryServiceImpl implements CategoryService {
+	
 	@Autowired
 	private CategoryDAO categoryDao;
 

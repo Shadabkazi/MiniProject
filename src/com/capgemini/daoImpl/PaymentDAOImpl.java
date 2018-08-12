@@ -17,7 +17,7 @@ public class PaymentDAOImpl implements PaymentDAO {
 	
 	@Override
 	public List<Payment> getAllPayments() {
-		return (List<Payment>)hibernateTemplate.find("from payment");
+		return (List<Payment>)hibernateTemplate.find("from Payment");
 		
 	}
 

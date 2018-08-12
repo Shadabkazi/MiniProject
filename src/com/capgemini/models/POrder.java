@@ -1,10 +1,12 @@
 package com.capgemini.models;
 
 import java.sql.Date;
+import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
@@ -32,8 +34,9 @@ public class POrder {
 	
 	@OneToOne(cascade=CascadeType.ALL)
 	private Payment payment;
-
-	private Cart cart;
+	
+	@OneToMany
+	private List<Item> items;
 
 	public int getOrderId() {
 		return orderId;
@@ -91,16 +94,7 @@ public class POrder {
 		this.customer = customer;
 	}
 
-	public Cart getCart() {
-		return cart;
-	}
 
-	public void setCart(Cart cart) {
-		this.cart = cart;
-	}
-	
-	
-	
 	public Payment getPayment() {
 		return payment;
 	}
@@ -113,12 +107,22 @@ public class POrder {
 		// TODO Auto-generated constructor stub
 	}
 
+	public List<Item> getItems() {
+		return items;
+	}
+
+	public void setItems(List<Item> items) {
+		this.items = items;
+	}
+
 	@Override
 	public String toString() {
 		return "POrder [orderId=" + orderId + ", orderDate=" + orderDate + ", address=" + address + ", taxAmount="
 				+ taxAmount + ", discount=" + discount + ", totalAmount=" + totalAmount + ", customer=" + customer
-				+ ", payment=" + payment + ", cart=" + cart + "]";
+				+ ", payment=" + payment + ", items=" + items + "]";
 	}
+
+	
 	
 	
 	

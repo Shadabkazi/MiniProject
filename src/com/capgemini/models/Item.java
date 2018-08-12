@@ -2,6 +2,7 @@ package com.capgemini.models;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 import org.springframework.stereotype.Component;
@@ -17,6 +18,9 @@ public class Item {
 	
 	private int quantity;
 	private float amount;
+	
+	@OneToOne
+	private Product product;
 	
 	
 	
@@ -43,10 +47,17 @@ public class Item {
 	public Item() {
 		
 	}
+	public Product getProduct() {
+		return product;
+	}
+	public void setProduct(Product product) {
+		this.product = product;
+	}
 	@Override
 	public String toString() {
-		return "Item [id=" + id + ", quantity=" + quantity + ", amount=" + amount + "]";
+		return "Item [id=" + id + ", quantity=" + quantity + ", amount=" + amount + ", product=" + product + "]";
 	}
+	
 	
 	
 	

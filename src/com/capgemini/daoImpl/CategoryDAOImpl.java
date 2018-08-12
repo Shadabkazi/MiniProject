@@ -20,7 +20,7 @@ public class CategoryDAOImpl implements CategoryDAO {
 	public List<Category> getAllCategories() {
 		// TODO Auto-generated method stub
 		
-		return (List<Category>) hibernateTemplate.find("from category");
+		return (List<Category>) hibernateTemplate.find("from Category");
 	}
 
 	@Override

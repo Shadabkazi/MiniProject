@@ -2,21 +2,17 @@ package com.capgemini.models;
 
 import java.util.List;
 
-import javax.persistence.CascadeType;
-import javax.persistence.Embeddable;
-import javax.persistence.OneToMany;
+import org.springframework.stereotype.Component;
 
 
-@Embeddable
+@Component
 public class Cart {
 	
-	@OneToMany(cascade=CascadeType.ALL)
 	private List<Item> items;
 	
 	public Cart() {
 		// TODO Auto-generated constructor stub
 	}
-
 	
 	public List<Item> getItems() {
 		return items;

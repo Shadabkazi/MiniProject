@@ -18,7 +18,7 @@ public class ItemDAOImpl implements ItemDAO {
 	@Override
 	public List<Item> getAllItems() {
 		// TODO Auto-generated method stub
-		return (List<Item>) hibernateTemplate.find("from item");
+		return (List<Item>) hibernateTemplate.find("from Item");
 		
 	}
 

@@ -8,10 +8,12 @@ import org.springframework.stereotype.Repository;
 
 import com.capgemini.daos.CustomerDao;
 import com.capgemini.models.Customer;
+
 @Repository
 public class CustomerDaoImpl implements CustomerDao {
-	  @Autowired
-		private HibernateTemplate hibernateTemplate;
+	@Autowired
+	private HibernateTemplate hibernateTemplate;
+
 	@Override
 	public List<Customer> getAllCustomers() {
 		// TODO Auto-generated method stub
@@ -41,8 +43,5 @@ public class CustomerDaoImpl implements CustomerDao {
 		// TODO Auto-generated method stub
 		hibernateTemplate.delete(customer);
 	}
-	
-		
-	}
 
-
+}

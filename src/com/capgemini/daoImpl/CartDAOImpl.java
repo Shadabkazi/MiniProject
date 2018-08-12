@@ -1,12 +1,7 @@
 package com.capgemini.daoImpl;
 
-import java.sql.SQLException;
 import java.util.List;
 
-import javax.persistence.Query;
-
-import org.hibernate.Session;
-import org.hibernate.Transaction;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.orm.hibernate5.HibernateTemplate;
 import org.springframework.stereotype.Repository;
@@ -23,7 +18,7 @@ public class CartDAOImpl implements CartDAO {
 	
 	@Override
 	public List<Cart> getAllCart() {
-		return	(List<Cart>) hibernateTemplate.find("from cart");
+		return	(List<Cart>) hibernateTemplate.find("from Cart");
 	}
 
 	@Override

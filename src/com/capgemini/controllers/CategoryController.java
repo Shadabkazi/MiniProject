@@ -12,20 +12,18 @@ import com.capgemini.models.Category;
 import com.capgemini.services.CategoryService;
 
 @Controller
-public class HomeController {
+public class CategoryController {
 
 	@Autowired
 	private CategoryService categoryService;
 	
-	@RequestMapping(value="/", method=RequestMethod.GET)
-	public String indexPage(ModelMap map) {
+	@RequestMapping(value="/categories", method=RequestMethod.GET)
+	public String getAllCategories(ModelMap map) {
+		
 		List<Category> categories=categoryService.findAll();
 		
 		map.addAttribute("categories",categories);
 		
-		return "index";
+		return "categories";
 	}
-	
-	
-	
 }

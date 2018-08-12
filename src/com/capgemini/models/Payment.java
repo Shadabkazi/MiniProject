@@ -25,7 +25,6 @@ public class Payment {
 	private Customer customer;
 	
 	
-	
 	public Payment() {
 	}
 

@@ -5,11 +5,13 @@ import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 import org.springframework.stereotype.Component;
@@ -20,7 +22,8 @@ import org.springframework.stereotype.Component;
 public class Product {
 
 	@Id
-	private int id;
+	@GeneratedValue(strategy=GenerationType.AUTO)
+	private Integer id;
 	
 	@Column(name="name")
 	private String name;
@@ -37,19 +40,39 @@ public class Product {
 	@OneToMany(cascade=CascadeType.ALL)
 	private List<Image> images;
 	
-	
+	@ManyToOne(fetch=FetchType.EAGER)
+	@JoinColumn(name="categories_Id")
+	private Category category;
 	
 	public Product() {
 		// TODO Auto-generated constructor stub
 	}
 
-	public int getId() {
+	
+
+	public Category getCategory() {
+		return category;
+	}
+
+
+
+	public void setCategory(Category category) {
+		this.category = category;
+	}
+
+
+
+	public Integer getId() {
 		return id;
 	}
 
-	public void setId(int id) {
+
+
+	public void setId(Integer id) {
 		this.id = id;
 	}
+
+
 
 	public String getName() {
 		return name;
@@ -81,14 +104,6 @@ public class Product {
 
 	public void setDescription(String description) {
 		this.description = description;
-	}
-
-	public  List<Image> getImage() {
-		return images;
-	}
-
-	public void setImage( List<Image> image) {
-		this.images = image;
 	}
 
 	public List<Image> getImages() {

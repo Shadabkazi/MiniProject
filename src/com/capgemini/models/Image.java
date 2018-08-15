@@ -20,7 +20,7 @@ public class Image {
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
-	private int ID;
+	private Integer id;
 	private String name;
 	
 	@Lob
@@ -31,13 +31,18 @@ public class Image {
 		// TODO Auto-generated constructor stub
 	}
 	
-	public int getID() {
-		return ID;
+	
+
+	public Integer getID() {
+		return id;
 	}
 
-	public void setID(int iD) {
-		ID = iD;
+
+
+	public void setID(Integer iD) {
+		id = iD;
 	}
+
 
 
 	public String getName() {
@@ -61,7 +66,7 @@ public class Image {
 
 	@Override
 	public String toString() {
-		return "Image [ID=" + ID + ", name=" + name + ", image=" + image + "]";
+		return "Image [ID=" + id + ", name=" + name + ", image=" + image + "]";
 	}
 	
 	

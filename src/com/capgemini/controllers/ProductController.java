@@ -16,12 +16,11 @@ public class ProductController {
 	@Autowired
 	private ProductService productService;
 	
-	
 	@RequestMapping(value="/product/{productId}", method=RequestMethod.GET)
 	public String product(@PathVariable("productId")int productId, ModelMap map) {
 		Product product=productService.findById(productId);
-		
 		map.addAttribute("product", product);
 		return "product";
 	}
+	
 }

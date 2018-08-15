@@ -5,6 +5,8 @@ import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
@@ -19,7 +21,8 @@ import org.springframework.stereotype.Component;
 public class POrder {
 	
 	@Id
-	private int orderId;
+	@GeneratedValue(strategy=GenerationType.AUTO)
+	private Integer orderId;
 	private Date orderDate;
 	
 	@OneToOne(cascade=CascadeType.ALL)
@@ -38,11 +41,13 @@ public class POrder {
 	@OneToMany
 	private List<Item> items;
 
-	public int getOrderId() {
+	
+
+	public Integer getOrderId() {
 		return orderId;
 	}
 
-	public void setOrderId(int orderId) {
+	public void setOrderId(Integer orderId) {
 		this.orderId = orderId;
 	}
 

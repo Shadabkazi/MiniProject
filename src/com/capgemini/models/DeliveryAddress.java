@@ -3,6 +3,7 @@ package com.capgemini.models;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
@@ -14,8 +15,8 @@ import org.springframework.stereotype.Component;
 public class DeliveryAddress {
 	
 	@Id
-	@GeneratedValue
-	private int addressId;
+	@GeneratedValue(strategy=GenerationType.AUTO)
+	private Integer addressId;
 	
 	@Column(length=30)
 	private String addressLine1;
@@ -36,13 +37,19 @@ public class DeliveryAddress {
 		// TODO Auto-generated constructor stub
 	}
 
-	public int getAddressId() {
+	
+	
+	public Integer getAddressId() {
 		return addressId;
 	}
 
-	public void setAddressId(int addressId) {
+
+
+	public void setAddressId(Integer addressId) {
 		this.addressId = addressId;
 	}
+
+
 
 	public String getAddressLine1() {
 		return addressLine1;

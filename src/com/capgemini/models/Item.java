@@ -1,6 +1,8 @@
 package com.capgemini.models;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
@@ -14,7 +16,8 @@ import org.springframework.stereotype.Component;
 public class Item {
 	
 	@Id
-	private int id;
+	@GeneratedValue(strategy=GenerationType.AUTO)
+	private Integer id;
 	
 	private int quantity;
 	private float amount;
@@ -24,10 +27,11 @@ public class Item {
 	
 	
 	
-	public int getId() {
+	
+	public Integer getId() {
 		return id;
 	}
-	public void setId(int id) {
+	public void setId(Integer id) {
 		this.id = id;
 	}
 	public int getQuantity() {

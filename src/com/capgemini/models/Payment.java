@@ -4,7 +4,11 @@ import java.sql.Date;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
@@ -16,7 +20,8 @@ import org.springframework.stereotype.Component;
 public class Payment {
 	
 	@Id
-	private int id;
+	@GeneratedValue(strategy=GenerationType.AUTO)
+	private Integer id;
 	private String paymentMode;
 	private Date paymentDate;
 	private float totalAmount;
@@ -28,13 +33,19 @@ public class Payment {
 	public Payment() {
 	}
 
-	public int getId() {
+	
+
+	public Integer getId() {
 		return id;
 	}
 
-	public void setId(int id) {
+
+
+	public void setId(Integer id) {
 		this.id = id;
 	}
+
+
 
 	public String getPaymentMode() {
 		return paymentMode;

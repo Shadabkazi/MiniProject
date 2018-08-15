@@ -8,8 +8,8 @@
 </head>
 <body>
 <ul>
-	<c:forEach var="product" items="${categories }">
-		<li>${categories.name }</li>
+	<c:forEach var="category" items="${categories }">
+		<li>${category.name }</li>
 	
 	</c:forEach>
 </ul>

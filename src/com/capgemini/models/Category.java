@@ -1,11 +1,12 @@
 package com.capgemini.models;
 
+import java.util.List;
 import java.util.Set;
 
 import javax.persistence.CascadeType;
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
@@ -18,28 +19,33 @@ import org.springframework.stereotype.Component;
 @Table(name="CATEGORY")
 public class Category {
 	@Id
-	@GeneratedValue
-	@Column(name="ID")
-	private int Id;
+	@GeneratedValue(strategy=GenerationType.AUTO)
+	private Integer id;
 	private String name;
 	private String description;
 	
 	@OneToOne(cascade=CascadeType.ALL)
 	private Image image;
 	
-	@OneToMany
-	private Set<Product> products;
+	@OneToMany(mappedBy="category")
+	private List<Product> products;
 	
 	public Category() {
 	}
 
-	public int getId() {
-		return Id;
+
+	public Integer getId() {
+		return id;
 	}
 
-	public void setId(int id) {
-		Id = id;
+
+	public void setId(Integer id) {
+		this.id = id;
 	}
+
+
+
+
 
 	public String getName() {
 		return name;
@@ -64,18 +70,20 @@ public class Category {
 	public void setImage(Image image) {
 		this.image = image;
 	}
-
-	public Set<Product> getProducts() {
+	
+	public List<Product> getProducts() {
 		return products;
 	}
 
-	public void setProducts(Set<Product> products) {
+
+	public void setProducts(List<Product> products) {
 		this.products = products;
 	}
 
+
 	@Override
 	public String toString() {
-		return "Category [Id=" + Id + ", name=" + name + ", description=" + description + ", image=" + image
+		return "Category [Id=" + id + ", name=" + name + ", description=" + description + ", image=" + image
 				+ ", products=" + products + "]";
 	}
 

@@ -9,7 +9,7 @@
 <title>All Products</title>
 </head>
 <body>
-<h1 style="text-align:center;">All Products</h1>
+<h1 style="text-align:center;"><a href="${pageContext.request.contextPath}/admin/category">Categories</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="${pageContext.request.contextPath}/admin/products">Product</a></h1>
 <p style="text-align:right;"><a href="${pageContext.request.contextPath}/admin/product/add">Add Product</a></p>
 	<table border="1">
 		<tr>

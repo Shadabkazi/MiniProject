@@ -34,8 +34,7 @@ public class CategoryAdminController {
 
 	@Autowired
 	private CategoryService categoryService;
-	
-	
+
 	//Viewing categories
 	 @GetMapping("admin/category")
 	    public String viewCategory(ModelMap map)
@@ -54,7 +53,7 @@ public class CategoryAdminController {
 	 
 	 
 	 @RequestMapping(value="admin/category/addData",method=RequestMethod.POST ,consumes = {MediaType.MULTIPART_FORM_DATA_VALUE})
-	    public String addCategoryData(@RequestParam("image") MultipartFile file,@RequestParam("name")String name,@RequestParam("description")String description)
+	    public String addCategoryData(@RequestParam("image") MultipartFile file,@RequestParam("cName")String name,@RequestParam("cDescription")String description)
 	    {
 		 if (!file.isEmpty()) {
 				try {
@@ -74,8 +73,8 @@ public class CategoryAdminController {
 					img.setImage(categoryImg);
 					
 					Category c=new Category();
-					c.setName(name);
-					c.setDescription(description);
+					c.setcName(name);
+					c.setcDescription(description);
 					c.setImage(img);
 					
 					categoryService.add(c);

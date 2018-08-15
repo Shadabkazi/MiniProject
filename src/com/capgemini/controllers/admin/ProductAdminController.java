@@ -47,6 +47,7 @@ public class ProductAdminController {
 		return "admin/ProductsView";
 	}
 
+	// show ProductAddForm page
 	@GetMapping("admin/product/add")
 	public String showAdminPage(ModelMap map) {
 		List<Category> categories=categoryService.findAll();
@@ -75,12 +76,11 @@ public class ProductAdminController {
 					img.setName(file.getOriginalFilename());
 					img.setImage(productImg);
 					
-					System.out.println(product.getName());
-					System.out.println(product.getBrand());
-					System.out.println(product.getDescription());
-					System.out.println(product.getPrice());
+					ArrayList<Image> images=new ArrayList<>();
+					images.add(img);
 					
-					
+					product.setImages(images);
+					productService.add(product);
 					
 				}catch (Exception e) {
 					e.printStackTrace();
@@ -94,6 +94,7 @@ public class ProductAdminController {
 	// editing products
 	@PostMapping("/admin/product/edit")
 	public String editProduct(@ModelAttribute Product product) {
+		System.out.println(product);
 		productService.edit(product);
 		return "redirect:/admin/products";
 	}
@@ -103,6 +104,7 @@ public class ProductAdminController {
 	public String showEditProductPage(ModelMap map, @PathVariable("productId") int productId) {
 		Product p = productService.findById(productId);
 		map.addAttribute("product", p);
+		
 		return "admin/ProductEditForm";
 	}
 

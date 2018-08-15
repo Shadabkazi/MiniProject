@@ -15,13 +15,13 @@ import org.springframework.stereotype.Component;
 
 @Component
 @Entity
-@Table(name="IMAGE1")
+@Table(name="IMAGE")
 public class Image {
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private Integer id;
-	private String name;
+	private String iName;
 	
 	@Lob
 	private Blob image;
@@ -46,12 +46,12 @@ public class Image {
 
 
 	public String getName() {
-		return name;
+		return iName;
 	}
 
 
 	public void setName(String name) {
-		this.name = name;
+		this.iName = name;
 	}
 
 
@@ -66,7 +66,7 @@ public class Image {
 
 	@Override
 	public String toString() {
-		return "Image [ID=" + id + ", name=" + name + ", image=" + image + "]";
+		return "Image [ID=" + id + ", name=" + iName + ", image=" + image + "]";
 	}
 	
 	

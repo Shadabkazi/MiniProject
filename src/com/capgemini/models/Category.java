@@ -4,10 +4,13 @@ import java.util.List;
 import java.util.Set;
 
 import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
@@ -21,17 +24,35 @@ public class Category {
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private Integer id;
-	private String name;
-	private String description;
+	private String cName;
+	@Column(length=1000)
+	private String cDescription;
 	
-	@OneToOne(cascade=CascadeType.ALL)
+	@OneToOne(cascade=CascadeType.ALL, fetch=FetchType.EAGER)
 	private Image image;
 	
-	@OneToMany(mappedBy="category")
+	@OneToMany(fetch=FetchType.EAGER)
 	private List<Product> products;
+
 	
 	public Category() {
 	}
+
+
+	
+	
+	public List<Product> getProducts() {
+		return products;
+	}
+
+
+
+
+	public void setProducts(List<Product> products) {
+		this.products = products;
+	}
+
+
 
 
 	public Integer getId() {
@@ -44,24 +65,37 @@ public class Category {
 	}
 
 
+	
 
 
-
-	public String getName() {
-		return name;
+	
+	public String getcName() {
+		return cName;
 	}
 
-	public void setName(String name) {
-		this.name = name;
+
+
+
+	public void setcName(String cName) {
+		this.cName = cName;
 	}
 
-	public String getDescription() {
-		return description;
+
+
+
+	public String getcDescription() {
+		return cDescription;
 	}
 
-	public void setDescription(String description) {
-		this.description = description;
+
+
+
+	public void setcDescription(String cDescription) {
+		this.cDescription = cDescription;
 	}
+
+
+
 
 	public Image getImage() {
 		return image;
@@ -70,21 +104,13 @@ public class Category {
 	public void setImage(Image image) {
 		this.image = image;
 	}
-	
-	public List<Product> getProducts() {
-		return products;
-	}
 
-
-	public void setProducts(List<Product> products) {
-		this.products = products;
-	}
 
 
 	@Override
 	public String toString() {
-		return "Category [Id=" + id + ", name=" + name + ", description=" + description + ", image=" + image
-				+ ", products=" + products + "]";
+		return "Category [Id=" + id + ", name=" + cName + ", description=" + cDescription + ", image=" + image
+				+ "]";
 	}
 
 	

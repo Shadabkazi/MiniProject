@@ -11,8 +11,8 @@
 <form action="${pageContext.request.contextPath}/admin/category/edit" method="post" modelAttribute="Category">
 <table>
 <tr><td>Category ID:</td><td><input type="text" name="id" value="${Category.id}"></td></tr>
-<tr><td>category Name:</td><td><input type="text" name="name" value="${Category.name}"></td></tr>
-<tr><td>Category Description:</td><td><input type="text" name="description" value="${Category.description}"></td></tr>
+<tr><td>category Name:</td><td><input type="text" name="cName" value="${Category.cName}"></td></tr>
+<tr><td>Category Description:</td><td><input type="text" name="cDescription" value="${Category.cDescription}"></td></tr>
 <%-- <tr><td>Image:</td><td><input type="file" name="image" value="${Category.image}"></td></tr> --%>
 <tr><td></td><td><input type="submit"></td></tr>
 </table>

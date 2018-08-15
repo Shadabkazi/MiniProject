@@ -8,7 +8,7 @@
 <title>All Categories</title>
 </head>
 <body>
-<h1 style="text-align:center;">All Categories</h1>
+<h1 style="text-align:center;"><a href="${pageContext.request.contextPath}/admin/category">Categories</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="${pageContext.request.contextPath}/admin/products">Product</a></h1>
 <p style="text-align:right;"><a href="${pageContext.request.contextPath}/admin/category/add">Add Category</a></p>
 <table border=1>
 <tr>
@@ -19,8 +19,8 @@
 <c:forEach var="category" items="${categories}">
 <tr>
 <td>${category.id}</td>
-<td>${category.name}</td>
-<td>${category.description}</td>
+<td>${category.cName}</td>
+<td>${category.cDescription}</td>
 <td><a href="${pageContext.request.contextPath}/admin/category/${category.id}/edit">Edit</a></td>
 <td><a href="${pageContext.request.contextPath}/admin/category/${category.id}/remove">Delete</a></td>
 </tr>

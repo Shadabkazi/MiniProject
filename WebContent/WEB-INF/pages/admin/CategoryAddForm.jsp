@@ -10,8 +10,8 @@
 <body>
 <form action="addData" method="post" enctype="multipart/form-data">
 <table>
-<tr><td>Category Name:</td><td><input type="text" name="name"></td></tr>
-<tr><td>Category Description:</td><td><input type="text" name="description"></td></tr>
+<tr><td>Category Name:</td><td><input type="text" name="cName"></td></tr>
+<tr><td>Category Description:</td><td><input type="text" name="cDescription"></td></tr>
 <!-- <tr><td>Image name:</td><td><input type="text" name="imageName"></td></tr> -->
 <tr><td>Image:</td><td><input type="file" name="image"></td></tr>
 <tr><td><input type="submit" value="Submit"></td><td><input type="reset" value="Reset"></td></tr>

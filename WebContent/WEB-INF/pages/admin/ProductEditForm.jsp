@@ -9,14 +9,14 @@
 </head>
 <body>
 <body>
-<form:form action="${pageContext.request.contextPath}/admin/product/edit" method="post" modelAttribute="Product">
+<form:form action="${pageContext.request.contextPath}/admin/product/edit" method="post" modelAttribute="product">
 <table>
 <tr><td>ID:</td><td><form:input type="text" name="id" value="${product.id}" path="id"/></td></tr>
 <tr><td>Name:</td><td><form:input type="text" name="name" value="${product.name}" path="name"/></td></tr>
 <tr><td>Brand:</td><td><form:input type="text" name="brand" value="${product.brand}" path="brand" /></td></tr>
 <tr><td>Price:</td><td><form:input type="number" name="price" value="${product.price}" path="price" /></td></tr>
 <tr><td>Description:</td><td><form:textarea type="text" name="description" value="${product.description}" path="description"/></td></tr>
-<tr><td></td><td><input type="submit" value="Sumit"></td></tr>
+<tr><td></td><td><input type="submit" value="Submit"></td></tr>
 
 </table>
 

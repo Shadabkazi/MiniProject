@@ -34,14 +34,13 @@ public class Product {
 	@Column(name="price")
 	private float price;
 	
-	@Column(name="description")
+	@Column(name="description", length=1500)
 	private String description;
 	
 	@OneToMany(cascade=CascadeType.ALL)
 	private List<Image> images;
 	
-	@ManyToOne(fetch=FetchType.EAGER)
-	@JoinColumn(name="categories_Id")
+	@ManyToOne(cascade=CascadeType.ALL)
 	private Category category;
 	
 	public Product() {

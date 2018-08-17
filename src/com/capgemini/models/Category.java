@@ -1,7 +1,6 @@
 package com.capgemini.models;
 
 import java.util.List;
-import java.util.Set;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -10,7 +9,6 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
@@ -20,7 +18,7 @@ import org.springframework.stereotype.Component;
 @Component
 @Entity
 @Table(name="CATEGORY")
-public class Category {
+public class Category{
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private Integer id;
@@ -31,7 +29,7 @@ public class Category {
 	@OneToOne(cascade=CascadeType.ALL, fetch=FetchType.EAGER)
 	private Image image;
 	
-	@OneToMany(fetch=FetchType.EAGER)
+	@OneToMany(fetch=FetchType.EAGER, cascade=CascadeType.PERSIST)
 	private List<Product> products;
 
 	

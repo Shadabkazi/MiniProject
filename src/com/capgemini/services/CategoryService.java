@@ -16,6 +16,5 @@ Category findCategoryById(int categoryId);
 	void add(Category category);
 	void edit(Category category);
 	void remove(Category category);
-	
 
 }

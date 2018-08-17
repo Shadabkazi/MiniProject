@@ -2,7 +2,6 @@ package com.capgemini.models;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
@@ -13,12 +12,13 @@ import org.springframework.stereotype.Component;
 @Table(name = "CUSTOMER")
 public class Customer {
 	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
-	private Integer id;
+	@GeneratedValue
+	private int id;
 	private String fName;
 	private String lName;
 	private long mobileNumber;
 	private String emailId;
+	private String password;
 	private String addressLine1;
 	private String addressLine2;
 	private String addressLine3;
@@ -28,20 +28,14 @@ public class Customer {
 	}
 
 
-	public Integer getId() {
+	public int getId() {
 		return id;
 	}
 
 
-
-
-
-	public void setId(Integer id) {
+	public void setId(int id) {
 		this.id = id;
 	}
-
-
-
 
 
 	public String getfName() {
@@ -119,6 +113,16 @@ public class Customer {
 		return "Customer [id=" + id + ", fName=" + fName + ", lName=" + lName + ", mobileNumber=" + mobileNumber
 				+ ", emailId=" + emailId + ", addressLine1=" + addressLine1 + ", addressLine2=" + addressLine2
 				+ ", addressLine3=" + addressLine3 + "]";
+	}
+
+
+	public String getPassword() {
+		return password;
+	}
+
+
+	public void setPassword(String password) {
+		this.password = password;
 	}
 
 

@@ -7,8 +7,8 @@ import javax.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.capgemini.daos.LoginDAO;
-import com.capgemini.models.Login;
+import com.capgemini.models.Customer;
+import com.capgemini.services.CustomerService;
 import com.capgemini.services.LoginService;
 
 @Service
@@ -16,36 +16,43 @@ import com.capgemini.services.LoginService;
 public class LoginServiceImpl  implements LoginService{
 
 	@Autowired
-	private LoginDAO loginDAO;
-
-	@Override
-	public List<Login> findAll() {
-		// TODO Auto-generated method stub
-		return loginDAO.getAllProducts();
-	}
-
-	@Override
-	public Login findLoginById(int loginId) {
-		// TODO Auto-generated method stub
-		return loginDAO.getLoginById(loginId);
-	}
-
-	@Override
-	public void add(Login login) {
-		// TODO Auto-generated method stub
-		loginDAO.insert(login);
-	}
-
-	@Override
-	public void edit(Login login) {
-		// TODO Auto-generated method stub
-		loginDAO.update(login);
-	}
-
-	@Override
-	public void remove(Login login) {
-		// TODO Auto-generated method stub
-		loginDAO.delete(login);
-	}
+	private LoginService loginService;
 	
+	@Autowired
+	private CustomerService customerService;
+	@Override
+	public boolean isValidLogin(Customer customer) {
+		// TODO Auto-generated method stub
+		
+		String emailId = customer.getEmailId();
+		List<Customer> cus = customerService.findAll();
+		
+		Customer cust=null;
+		
+		for (Customer c : cus) {
+			if(c.getEmailId().equals(customer.getEmailId())) {
+				cust=c;
+			}
+		}
+
+		if(cust!=null) {
+			if(customer.getPassword().equals(cust.getPassword())) {
+				return true;
+			}
+			else {
+				return false;
+			}
+		}
+		else {
+			return false;
+		}
+		
+		/*if (customer.getEmailId().equals("james007@pheonix.com") && customer.getPassword().equals("james007")) {
+			return true;
+		} else {
+			return false;
+		}*/
+
 	}
+
+}

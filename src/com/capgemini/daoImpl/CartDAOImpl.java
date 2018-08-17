@@ -14,7 +14,6 @@ public class CartDAOImpl implements CartDAO {
 	
 	@Autowired
 	private HibernateTemplate hibernateTemplate;
-
 	
 	@Override
 	public List<Cart> getAllCart() {

@@ -106,5 +106,11 @@ public class ProductServiceImpl implements ProductService {
 			return products.stream().sorted((p1,p2)->p2.getPrice()>p1.getPrice()?1:-1).collect(Collectors.toList());		
 	}
 
+	@Override
+	public List<Product> findByCategoryId(int id) {
+		
+		return productDao.getProductByCategoryId(id);
+	}
+
 	
 }

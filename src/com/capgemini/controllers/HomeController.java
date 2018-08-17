@@ -1,16 +1,12 @@
 package com.capgemini.controllers;
 
-import java.awt.image.BufferedImage;
+import java.io.ByteArrayOutputStream;
 import java.io.File;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.InputStream;
-import java.sql.Blob;
-import java.sql.SQLException;
+import java.io.FileInputStream;
+import java.util.ArrayList;
 import java.util.List;
 
-import javax.imageio.ImageIO;
-
+import org.apache.tomcat.util.codec.binary.Base64;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -26,39 +22,66 @@ public class HomeController {
 	@Autowired
 	private CategoryService categoryService;
 	
+
 	@RequestMapping(value="/", method=RequestMethod.GET)
 	public String indexPage(ModelMap map) {
 		List<Category> categories=categoryService.findAll();
 		map.addAttribute("categories",categories);
+		ArrayList<String> images=new ArrayList<>();
 		
 		try{
             for (Category category : categories) {
             	System.out.println(category.getImage().getName());
-            	File f=new File("downloaded/"+category.getImage().getName());
-            	System.out.println(f.getAbsolutePath());
-            	 FileOutputStream fos = new FileOutputStream(f);
+            	
+            	
+            	File file = new File("\\uploaded\\"+category.getImage().getName());
+            	System.out.println(file.getAbsolutePath());
+            	FileInputStream fis=new FileInputStream(file);
+            	ByteArrayOutputStream bos=new ByteArrayOutputStream();
+            	int b;
+            	byte[] buffer = new byte[1024];
+            	while((b=fis.read(buffer))!=-1){
+            	   bos.write(buffer,0,b);
+            	}
+            	byte[] fileBytes=bos.toByteArray();
+            	fis.close();
+            	bos.close();
+
+
+            	byte[] encoded=Base64.encodeBase64(fileBytes);
+            	String encodedString = new String(encoded);
+            	
+            	
+            	images.add(encodedString);
+            	
+            	
+            	
+            	
+            	 /*FileOutputStream fos = new FileOutputStream("\\downloaded\\"+category.getImage().getName());
+            	 String imgPath = "\\downloaded\\"+category.getImage().getName();
+            	 map.addAttribute("imgPath", imgPath);
             	 
-            	// get blob from db
+            	 
+            	 // get blob from db
             	 Blob imageBlob=category.getImage().getImage();
-            	 /*// read blob data
+            	 // read blob data
             	 int blobLength = (int) imageBlob.length();  
-            	 byte[] blobAsBytes = imageBlob.getBytes(1, blobLength);*/
+            	 byte[] blobAsBytes = imageBlob.getBytes(1, blobLength);
             	 
-                 fos.write(imageBlob.getBytes(1l, (int) imageBlob.length()));
+                 fos.write(blobAsBytes);
                  fos.close();
-                 System.out.println("File saved");
+                 System.out.println("File saved");*/
             	
 			}
+            
+            map.addAttribute("images", images);
            
-		}catch (SQLException ex) {
-            ex.printStackTrace();
-        } catch(Exception e){
+		}
+         catch(Exception e){
             e.printStackTrace();
         }
 		
 		return "index";
 	}
-	
-	
-	
+
 }

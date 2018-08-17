@@ -44,4 +44,15 @@ public class CustomerDaoImpl implements CustomerDao {
 		hibernateTemplate.delete(customer);
 	}
 
+	@Override
+	public Customer getCustomerByEmailId(String emailId) {
+		// TODO Auto-generated method stub
+		List<Customer> c = (List<Customer>) hibernateTemplate.find("from Customer c where c.emailId=?", emailId);
+		for (Customer customer : c) {
+			if(customer.getEmailId().equals(emailId))
+				return customer;
+		}
+		return null;
+	}
+
 }

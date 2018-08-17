@@ -8,6 +8,7 @@ public interface CustomerDao {
    //Data Access methods
 	List<Customer> getAllCustomers();
 	Customer getCustomerById(int id);
+	Customer getCustomerByEmailId(String emailId);
 	
 	void insert(Customer customer);
 	void update(Customer customer);

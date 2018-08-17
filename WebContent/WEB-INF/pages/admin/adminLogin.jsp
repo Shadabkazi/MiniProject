@@ -35,13 +35,13 @@
 	<div class="limiter">
 		<div class="container-login100">
 			<div class="wrap-login100 p-t-90 p-b-30">
-				<form class="login100-form validate-f" action="${pageContext.request.contextPath}/loginCtrl" method="post">
+				<form class="login100-form validate-fo" action="${pageContext.request.contextPath}/adminLogin" method="post">
 					<span class="login100-form-title p-b-40">
-						Pheonix Login
+						Pheonix Admin Login
 					</span>
 					
 					<div class="wrap-input100 validate-input m-b-16" data-validate="Please enter proper username.">
-						<input class="input100" type="text" name="emailId" placeholder="Username">
+						<input class="input100" type="text" name="username" placeholder="Username">
 						<span class="focus-input100"></span>
 					</div>
 
@@ -52,14 +52,12 @@
 						<input class="input100" type="password" name="password" placeholder="Password">
 						<span class="focus-input100"></span>
 					</div>
-						<p style="text-align:center; ">${error}</p>
+						<p style="text-align:center; ">${loginError}</p>
 					<div class="container-login100-form-btn">
 						<button class="login100-form-btn">
 							Login
 						</button>
 					</div>
-					
-					<p style="text-align: center;">Dont have an Account? <a href="${pageContext.request.contextPath}/signup">Sign Up!</a></p>
 					
 				</form>
 			</div>

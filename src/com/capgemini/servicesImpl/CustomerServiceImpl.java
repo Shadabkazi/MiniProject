@@ -85,4 +85,10 @@ public class CustomerServiceImpl implements CustomerService {
 		// TODO Auto-generated method stub
 		return customerDao.getAllCustomers();
 	}
+
+	@Override
+	public Customer findByEmailId(String emailId) {
+		// TODO Auto-generated method stub
+		return customerDao.getCustomerByEmailId(emailId);
+	}
 }

@@ -49,4 +49,12 @@ public class ProductDAOImpl implements ProductDAO {
 }
 
 
+	@Override
+	public List<Product> getProductByCategoryId(int id) {
+		
+		return (List<Product>) hibernateTemplate.find("from Product p where p.category.id=?", id);
+	}
+
+	
+
 }

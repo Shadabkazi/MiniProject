@@ -6,7 +6,7 @@ import org.springframework.stereotype.Component;
 
 
 @Component
-public class Cart {
+public class Cart{
 	
 	private List<Item> items;
 	

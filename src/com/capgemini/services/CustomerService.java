@@ -8,6 +8,7 @@ import com.capgemini.models.Customer;
 
 public interface CustomerService {
 	Customer findById(int customerId);
+	Customer findByEmailId(String emailId);
 	void insert(Customer customer);
 	void update(Customer customer);
 	void delete(Customer customer);

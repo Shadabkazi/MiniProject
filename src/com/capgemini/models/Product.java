@@ -9,9 +9,8 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 import org.springframework.stereotype.Component;
@@ -19,7 +18,7 @@ import org.springframework.stereotype.Component;
 @Component
 @Entity
 @Table(name="Product")
-public class Product {
+public class Product{
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
@@ -37,10 +36,10 @@ public class Product {
 	@Column(name="description", length=1500)
 	private String description;
 	
-	@OneToMany(cascade=CascadeType.ALL)
-	private List<Image> images;
+	@OneToOne(cascade=CascadeType.ALL, fetch=FetchType.EAGER)
+	private Image image;
 	
-	@ManyToOne(cascade=CascadeType.ALL)
+	@ManyToOne(cascade=CascadeType.DETACH)
 	private Category category;
 	
 	public Product() {
@@ -105,18 +104,18 @@ public class Product {
 		this.description = description;
 	}
 
-	public List<Image> getImages() {
-		return images;
+	public Image getImage() {
+		return image;
 	}
 
-	public void setImages(List<Image> images) {
-		this.images = images;
+	public void setImage(Image image) {
+		this.image = image;
 	}
 
 	@Override
 	public String toString() {
 		return "Product [id=" + id + ", name=" + name + ", brand=" + brand + ", price=" + price + ", description="
-				+ description + ", images=" + images + "]";
+				+ description + ", image=" + image + "]";
 	}
 
 	

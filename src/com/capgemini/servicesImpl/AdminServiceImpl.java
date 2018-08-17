@@ -60,5 +60,15 @@ public class AdminServiceImpl implements AdminService {
 	public List<Admin> sortByNameDesc() {
 		return findAll().stream().sorted((p1,p2)->p2.getUsername().compareTo(p1.getUsername())).collect(Collectors.toList());
 	}
+
+	@Override
+	public boolean isValid(Admin admin) {
+		// TODO Auto-generated method stub
+		if(admin.getUsername().equals("admin") && admin.getPassword().equals("admin")) {
+			return true;
+		}
+		else
+			return false;
+	}
 	
 }

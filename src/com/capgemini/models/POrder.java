@@ -18,7 +18,7 @@ import org.springframework.stereotype.Component;
 @Component
 @Entity
 @Table(name="POrder")
-public class POrder {
+public class POrder{
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)

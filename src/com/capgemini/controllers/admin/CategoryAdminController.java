@@ -60,12 +60,12 @@ public class CategoryAdminController {
 					byte[] bytes = file.getBytes();
 					
 		                BufferedOutputStream buffStream = 
-		                        new BufferedOutputStream(new FileOutputStream(new File(System.getProperty("user.dir")+"/uploaded/"+ file.getOriginalFilename())));
+		                        new BufferedOutputStream(new FileOutputStream(new File("\\uploaded\\"+ file.getOriginalFilename())));
 		                buffStream.write(bytes);
 		                
 					// Create the file on server
 					
-					FileInputStream finImg=new FileInputStream(System.getProperty("user.dir")+"/uploaded/"+ file.getOriginalFilename());
+					FileInputStream finImg=new FileInputStream("\\uploaded\\"+ file.getOriginalFilename());
 					Blob categoryImg=BlobProxy.generateProxy(finImg, finImg.available());
 					//System.out.println(context.getRealPath("")+"/resources/uploaded/"+ file.getOriginalFilename());
 					Image img=new Image();

@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -8,15 +9,19 @@
 <title>Add Product</title>
 </head>
 <body>
-<form:form action="add" method="post" enctype="multipart/form-data" modelAttribute="Product">
+<form:form action="add" method="post" enctype="multipart/form-data">
 <table>
-<tr><td>Name:</td><td><form:input type="text" name="name" path="name"/></td></tr>
-<tr><td>Brand:</td><td><form:input type="text" name="brand" path="brand" /></td></tr>
-<tr><td>Price:</td><td><form:input type="number" name="price" path="price" /></td></tr>
-<tr><td>Description:</td><td><form:textarea type="text" name="description" path="description"/></td></tr>
+<tr><td>Name:</td><td><input type="text" name="name"/></td></tr>
+<tr><td>Brand:</td><td><input type="text" name="brand"/></td></tr>
+<tr><td>Price:</td><td><input type="number" name="price"/></td></tr>
+<tr><td>Description:</td><td><textarea name="description"></textarea></td></tr>
 <tr><td>Image:</td><td><input type="file" name="image" /></td></tr>
-<tr><td>Category:</td><td><form:select path="Category.cName" placeholder="categories" tabindex="4" items="${Category}"></form:select></td>
-<tr><td></td><td><input type="submit" value="Sumit"></td></tr>
+<tr><td>Select Category:</td><td><select name="category" tabindex="4" >
+	 <c:forEach items="${category }" var="cat">
+	 	<option value="${cat.id }" >${cat.cName }</option>
+	 </c:forEach>
+</select>
+<tr><td></td><td><input type="submit" value="Submit"></td></tr>
 
 </table>
 

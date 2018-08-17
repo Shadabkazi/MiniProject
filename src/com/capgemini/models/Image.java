@@ -7,7 +7,6 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Lob;
-import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 import org.springframework.stereotype.Component;
@@ -16,7 +15,7 @@ import org.springframework.stereotype.Component;
 @Component
 @Entity
 @Table(name="IMAGE")
-public class Image {
+public class Image{
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)

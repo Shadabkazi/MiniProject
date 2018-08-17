@@ -6,7 +6,9 @@ import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.sql.Blob;
 import java.util.ArrayList;
+import java.util.LinkedHashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.hibernate.engine.jdbc.BlobProxy;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -51,35 +53,60 @@ public class ProductAdminController {
 	@GetMapping("admin/product/add")
 	public String showAdminPage(ModelMap map) {
 		List<Category> categories=categoryService.findAll();
+		/*Map<String,String> category=new LinkedHashMap<>();
+		for (Category cat : categories) {
+			category.put(String.valueOf(cat.getId()), cat.getcName());
+		}
+		for (Map.Entry<String,String> entry : category.entrySet()) 
+			System.out.println("Key = " + entry.getKey() +
+			                 ", Value = " + entry.getValue());
+		*/
 		map.addAttribute("Product",new Product());
-		map.addAttribute("Category",categories);
+		map.addAttribute("category",categories);
+		
 		return "admin/ProductAddForm";
 	}
 	
 	// adding product
 	@PostMapping(value="admin/product/add", consumes = {MediaType.MULTIPART_FORM_DATA_VALUE})
-	public String addProduct(@ModelAttribute Product product, @RequestParam("image") MultipartFile file) {
+	public String addProduct(@RequestParam("name")String name, @RequestParam("brand")String brand, @RequestParam("price")float price, @RequestParam("description")String description, @RequestParam("category") String category,  @RequestParam("image") MultipartFile file) {
 		 if (!file.isEmpty()) {
 				try {
 					byte[] bytes = file.getBytes();
 					
 		                BufferedOutputStream buffStream = 
-		                        new BufferedOutputStream(new FileOutputStream(new File(System.getProperty("user.dir")+"/uploaded/"+ file.getOriginalFilename())));
+		                        new BufferedOutputStream(new FileOutputStream(new File("\\uploaded\\"+ file.getOriginalFilename())));
 		                buffStream.write(bytes);
-		                
+		                buffStream.flush();
+		                buffStream.close();
 					// Create the file on server
 					
-					FileInputStream finImg=new FileInputStream(System.getProperty("user.dir")+"/uploaded/"+ file.getOriginalFilename());
-					Blob productImg=BlobProxy.generateProxy(finImg, finImg.available());
+					FileInputStream finImg2=new FileInputStream("\\uploaded\\"+ file.getOriginalFilename());
+					Blob productImg=BlobProxy.generateProxy(bytes);
 					
 					Image img=new Image();
 					img.setName(file.getOriginalFilename());
 					img.setImage(productImg);
 					
-					ArrayList<Image> images=new ArrayList<>();
-					images.add(img);
+					/*ArrayList<Image> images=new ArrayList<>();
+					images.add(img);*/
 					
-					product.setImages(images);
+					System.out.println(name);
+					System.out.println(brand);
+					System.out.println(price);
+					System.out.println(description);
+					System.out.println(category);
+					
+					Product product=new Product();
+					product.setName(name);
+					product.setBrand(brand);
+					product.setDescription(description);
+					product.setPrice(price);
+					product.setImage(img);
+					Category c=categoryService.findCategoryById(Integer.parseInt(category));
+					System.out.println(c);
+					product.setCategory(c);
+					
 					productService.add(product);
 					
 				}catch (Exception e) {

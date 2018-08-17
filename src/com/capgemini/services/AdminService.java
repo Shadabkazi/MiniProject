@@ -16,4 +16,6 @@ public interface AdminService {
 	 List<Admin> sortByIdDesc();
 	 List<Admin> sortByNameAsc();
 	 List<Admin> sortByNameDesc();
+	 
+	 boolean isValid(Admin admin);
 }

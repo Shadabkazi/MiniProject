@@ -16,5 +16,7 @@ public interface ProductDAO {
 		void update(Product product) ;
 		
 		void delete(Product product) ;
+		
+		public List<Product> getProductByCategoryId(int id);
 
 }

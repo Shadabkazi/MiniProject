@@ -13,6 +13,7 @@ public interface ProductService {
 	void add(Product product);
 	void edit(Product product);
 	void remove(Product product);
+	List<Product> findByCategoryId(int id);
 	
 	List<Product> sortById();
 	List<Product> sortByNameAscending();

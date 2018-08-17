@@ -30,30 +30,30 @@
 				<div class="row">
 					<div class="col">
 						<div class="header_content d-flex flex-row align-items-center justify-content-start">
-							<div class="logo"><a href="index.html">Pheonix.</a></div>
+							<div class="logo"><a href="${pageContext.request.contextPath}/">Pheonix</a></div>
 							<nav class="main_nav">
 								<ul>
 									<li class="hassubs active">
-										<a href="index.html">Home</a>
+										<a href="${pageContext.request.contextPath}/">Home</a>
 										<ul>
-											<li><a href="/categories/${category.id}">Categories</a></li>
-											<li><a href="/product/${product.id }">Product</a></li>
+											<%-- <li><a href="/categories/${category.id}">Categories</a></li>
+											<li><a href="/product/${product.id }">Product</a></li> --%>
 										</ul>
 									</li>
 									<li class="hassubs">
-										<a href="categories.html">Categories</a>
+										<a href="">Categories</a>
 										<ul>
 										<c:forEach var="category" items="${categories}">
-										<li><a href="/categories/${category.id}">${category.cName }</a></li>
-											<!-- <li><a href="categories.html">Electronics</a></li>
-											<li><a href="categories.html">Mobiles, Smartphones</a></li>
+											<li><a href="${pageContext.request.contextPath}/categories/${category.id}">${category.cName }</a></li>
+											
+											<!-- <li><a href="categories.html">Mobiles, Smartphones</a></li>
 											<li><a href="categories.html">Clothing</a></li>
 											<li><a href="categories.html">Footwear</a></li>
 											<li><a href="categories.html">Accessories</a></li> -->
 										</c:forEach>
 										</ul>
 									</li>
-									<li><a href="login">Login</a></li>
+									<li><a href="${pageContext.request.contextPath}/login">Login<p>${welcome}</p></a></li>
 									<li><a href="contact.html">Contact</a></li>
 								</ul>
 							</nav>
@@ -70,7 +70,7 @@
 													c0,7.5,6,13.5,13.5,13.5s13.5-6,13.5-13.5v-41h45.2l26.9,302.3C412.8,445.2,392.1,462,366.8,462z"/>
 											</g>
 										</svg>
-										<div>Cart <span>(0)</span></div>
+										<div>Cart <span>(${sessionScope.cartItems.size() })</span></div>
 									</a>
 								</div>
 								<div class="search">
@@ -141,9 +141,9 @@
 				</div>
 				<ul class="page_menu_nav menu_mm">
 					<li class="page_menu_item has-children menu_mm">
-						<a href="index.html">Home<i class="fa fa-angle-down"></i></a>
+						<a href="${pageContext.request.contextPath}/">Home<i class="fa fa-angle-down"></i></a>
 						<ul class="page_menu_selection menu_mm">
-							<li class="page_menu_item menu_mm"><a href="categories.html">Categories<i class="fa fa-angle-down"></i></a></li>
+							<li class="page_menu_item menu_mm"><a href="${pageContext.request.contextPath}/">Categories<i class="fa fa-angle-down"></i></a></li>
 							<li class="page_menu_item menu_mm"><a href="product.html">Product<i class="fa fa-angle-down"></i></a></li>
 							<li class="page_menu_item menu_mm"><a href="cart.html">Cart<i class="fa fa-angle-down"></i></a></li>
 							<li class="page_menu_item menu_mm"><a href="checkout.html">Checkout<i class="fa fa-angle-down"></i></a></li>
@@ -153,10 +153,12 @@
 					<li class="page_menu_item has-children menu_mm">
 						<a href="categories.html">Categories<i class="fa fa-angle-down"></i></a>
 						<ul class="page_menu_selection menu_mm">
+						<c:forEach var="category" items="${categories}">
+							<li class="page_menu_item menu_mm"><a href="${pageContext.request.contextPath}/categories/${category.id}">${category.cName }<i class="fa fa-angle-down"></i></a></li>
+							<!-- <li class="page_menu_item menu_mm"><a href="categories.html">Category<i class="fa fa-angle-down"></i></a></li>
 							<li class="page_menu_item menu_mm"><a href="categories.html">Category<i class="fa fa-angle-down"></i></a></li>
-							<li class="page_menu_item menu_mm"><a href="categories.html">Category<i class="fa fa-angle-down"></i></a></li>
-							<li class="page_menu_item menu_mm"><a href="categories.html">Category<i class="fa fa-angle-down"></i></a></li>
-							<li class="page_menu_item menu_mm"><a href="categories.html">Category<i class="fa fa-angle-down"></i></a></li>
+							<li class="page_menu_item menu_mm"><a href="categories.html">Category<i class="fa fa-angle-down"></i></a></li> -->
+						</c:forEach>
 						</ul>
 					</li>
 					<li class="page_menu_item menu_mm"><a href="index.html">Accessories<i class="fa fa-angle-down"></i></a></li>
@@ -182,7 +184,7 @@
 
 	<div class="home">
 		<div class="home_container">
-			<div class="home_background" style="background-image:url(<c:url value="/resources/images/categories.jpg)"/>"></div>
+			<div class="home_background" style="background-image:url(data:image/jpeg;base64,${cimage} )"></div>
 			<div class="home_content_container">
 				<div class="container">
 					<div class="row">
@@ -207,7 +209,7 @@
 					
 					<!-- Product Sorting -->
 					<div class="sorting_bar d-flex flex-md-row flex-column align-items-md-center justify-content-md-start">
-						<div class="results">Showing <span>12</span> results</div>
+						<div class="results">Showing <span>${products.size() }</span> products</div>
 						<div class="sorting_container ml-md-auto">
 							<div class="sorting">
 								<ul class="item_sorting">
@@ -230,17 +232,21 @@
 				<div class="col">
 					
 					<div class="product_grid">
-
+						<c:forEach var="productImage" items="${productImages }" varStatus="loop">
 						<!-- Product -->
 						<div class="product">
-							<div class="product_image"><img src="<c:url value="/resources/images/product_1.jpg"/>" alt=""></div>
-							<div class="product_extra product_new"><a href="categories.html">New</a></div>
+							<div class="product_image"><img src="data:image/jpeg;base64,${productImage}" alt=""></div>
+							<div class="product_extra product_new"><a href="">New</a></div>
 							<div class="product_content">
-								<div class="product_title"><a href="product.html">Smart Phone</a></div>
-								<div class="product_price">$670</div>
+							<c:forEach var="product" items="${products}" begin="${loop.index }" end="${loop.index }">
+								<div class="product_title"><a href="${pageContext.request.contextPath}/product/${product.id}">${product.name }</a></div>
+								<div class="product_price">Rs.${product.price }</div>
+							</c:forEach>
 							</div>
 						</div>
 
+						</c:forEach>
+						<%-- 
 						<!-- Product -->
 						<div class="product">
 							<div class="product_image"><img src="<c:url value="/resources/images/product_2.jpg"/>" alt=""></div>
@@ -346,7 +352,7 @@
 								<div class="product_price">$580</div>
 							</div>
 						</div>
-
+ --%>
 					</div>
 					<div class="product_pagination">
 						<ul>

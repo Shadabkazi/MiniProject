@@ -2,6 +2,7 @@ package com.capgemini.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -20,8 +21,12 @@ public class CustomerController {
 		// add in jsp file form modelAttribute="Customer"
 			customerService.insert(customer);
 		
-		return "";
+		return "redirect:/";
 	}
 	
+	@RequestMapping(value="signup", method=RequestMethod.GET)
+	public String showSignUpPage(ModelMap map) {
+		return "Signup";
+	}
 	
 }

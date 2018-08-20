@@ -6,6 +6,8 @@ import java.io.FileInputStream;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
 import org.apache.tomcat.util.codec.binary.Base64;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -24,7 +26,12 @@ public class HomeController {
 	
 
 	@RequestMapping(value="/", method=RequestMethod.GET)
-	public String indexPage(ModelMap map) {
+	public String indexPage(ModelMap map, HttpSession session) {
+		String isLogin="False";
+		if(session.getAttribute("isLogin")!=null){
+			isLogin= (String) session.getAttribute("isLogin");
+		}
+		
 		List<Category> categories=categoryService.findAll();
 		map.addAttribute("categories",categories);
 		ArrayList<String> images=new ArrayList<>();

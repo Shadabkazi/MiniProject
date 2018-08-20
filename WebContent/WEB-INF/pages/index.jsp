@@ -53,7 +53,16 @@
 										</c:forEach>
 										</ul>
 									</li>
-									<li><a href="${pageContext.request.contextPath}/login">Login<p>${welcome}</p></a></li>
+									<% String isLogin=(String)session.getAttribute("isLogin"); %>
+									<c:choose>
+										<c:when test="${isLogin=='True'}">
+											<li><a href="${pageContext.request.contextPath}/logout">Logout</p></a></li>
+										</c:when>
+										<c:otherwise>
+											<li><a href="${pageContext.request.contextPath}/login">Login</p></a></li>
+										</c:otherwise>
+									</c:choose>
+									
 									<li><a href="contact.html">Contact</a></li>
 								</ul>
 							</nav>

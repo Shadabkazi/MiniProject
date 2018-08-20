@@ -53,7 +53,15 @@
 										</c:forEach>
 										</ul>
 									</li>
-									<li><a href="${pageContext.request.contextPath}/login">Login<p>${welcome}</p></a></li>
+									<% String isLogin=(String)session.getAttribute("isLogin"); %>
+									<c:choose>
+										<c:when test="${isLogin=='True'}">
+											<li><a href="${pageContext.request.contextPath}/logout">Logout</p></a></li>
+										</c:when>
+										<c:otherwise>
+											<li><a href="${pageContext.request.contextPath}/login">Login</p></a></li>
+										</c:otherwise>
+									</c:choose>
 									<li><a href="contact.html">Contact</a></li>
 								</ul>
 							</nav>
@@ -207,8 +215,8 @@
 				<div class="col-lg-6">
 					<div class="details_content">
 						<div class="details_name">${product.name }</div>
-						<div class="details_discount">Rs. ${product.price }</div>
-						<div class="details_price">Rs. ${product.price+((20/100)*product.price) } </div>
+						<div class="details_discount">Rs. ${product.price+((20/100)*product.price) }</div>
+						<div class="details_price">Rs. ${product.price } </div>
 
 						<!-- In Stock -->
 						<div class="in_stock_container">

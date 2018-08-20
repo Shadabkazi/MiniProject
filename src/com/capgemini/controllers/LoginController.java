@@ -1,5 +1,7 @@
 package com.capgemini.controllers;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -20,7 +22,7 @@ public class LoginController {
 	private CustomerService customerService;
 	
 	@RequestMapping(value="/loginCtrl", method=RequestMethod.POST )
-	public String validateCustomer(Customer customer, ModelMap map) {
+	public String validateCustomer(Customer customer, ModelMap map, HttpSession session) {
 		
 		Customer c= customerService.findByEmailId(customer.getEmailId());
 		
@@ -28,6 +30,7 @@ public class LoginController {
 			map.addAttribute("customer",customer);
 			map.addAttribute("welcome","Welcome, " + c.getfName());
 			System.out.println(c.getfName());
+			session.setAttribute("isLogin", "True");
 			return "redirect:/";
 		}
 		else {
@@ -41,4 +44,9 @@ public class LoginController {
 		return "login";
 	}
 	
+	@RequestMapping(value="/logout")
+	public String logoutController(HttpSession session) {
+		session.setAttribute("isLogin", "False");
+		return "redirect:/";
+	}
 }

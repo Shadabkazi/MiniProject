@@ -71,7 +71,7 @@ function validate(){
 
 <tr><td align="right">Pincode:</td><td><input type="number" name="pincode" maxlength="6" autofocus></td></tr>
 
-<tr><td align="right">EmailId:</td><td><input type="text" name="emailId" maxlength="10" autofocus></td></tr>
+<tr><td align="right">EmailId:</td><td><input type="text" name="emailId" maxlength="40" autofocus></td></tr>
 
 <tr><td align="right">Password:</td><td><input type="password" name="password" maxlength="10" autofocus></td></tr>
 

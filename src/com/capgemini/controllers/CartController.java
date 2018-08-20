@@ -28,13 +28,13 @@ public class CartController {
 	@Autowired
 	private ItemService itemService;
 	
-	ArrayList<Item> items;
+	ArrayList<Item> items=new ArrayList<>();;
 	
 	@RequestMapping(value="cart", method=RequestMethod.POST)
 	@ResponseBody
-	public String addToCart(@RequestParam int productId, @RequestParam("qty") String quantity, HttpSession session,HttpServletRequest request) {
-		
-		Product p=productService.findById(productId);
+	public String addToCart(@RequestParam String productId, @RequestParam("qty") String quantity, HttpSession session,HttpServletRequest request) {
+		int id=Integer.parseInt(productId);
+		Product p=productService.findById(id);
 		int qty=Integer.parseInt(quantity);
 		
 		Item i=new Item();
@@ -46,7 +46,6 @@ public class CartController {
 		
 		Cart c=new Cart();
 		if(session.isNew()) {
-			items=new ArrayList<>();
 			items.add(i);
 			session.setAttribute("cartItems", items);
 		}else {

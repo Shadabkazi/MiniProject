@@ -16,13 +16,12 @@ public class POrderController {
 	@Autowired
 	private POrderService pOrderService;
 	
-	@RequestMapping(value="/order/{orderId}", method=RequestMethod.GET)
-	public String OrderDetails(@PathVariable("orderId")int orderId, ModelMap map) {
-		POrder order =pOrderService.findOrderById(orderId);
+	@RequestMapping(value="/order/add", method=RequestMethod.GET)
+	public String OrderDetails(ModelMap map) {
 		
-		map.addAttribute("order",order);
 		
 		return "checkout";
 	}
+	
 
 }
